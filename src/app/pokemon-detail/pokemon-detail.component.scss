@@ -1,0 +1,27 @@
+
+section {
+    width: 400px;
+    margin: 10px auto;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid lightgrey;
+    box-shadow: 2px 2px 2px #ccc;
+    font-family: Helvetica; 
+  }
+
+  button{
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    cursor: pointer;
+  }
+  .goBackBtn{
+    width: 80px;
+    margin: 10px auto 0 auto;
+  }
+  img{
+    width: 100x;
+    height: 200px;
+  }

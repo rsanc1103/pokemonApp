@@ -1,0 +1,30 @@
+<div class="goBackBtn">
+  <button onclick="window.history.go(-1);">Go back</button>
+</div>
+
+<ng-container *ngIf="pokemon$ | async as pokemon; else notFound">
+  <section>
+    <h3>{{ pokemon.name | titlecase }}</h3>
+    <img
+      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{
+        pokemon.id
+      }}.png"
+      alt=""
+    />
+    <br />
+    [
+    <div style="display: inline-block" *ngFor="let t of pokemon.types">
+      {{ t.type?.name }}
+    </div>
+    ]
+    <p>Weight: {{ pokemon.weight }}</p>
+    <p>Height: {{ pokemon.height }}</p>
+    <p>
+      Experience: <b>{{ pokemon.base_experience }}</b>
+    </p>
+  </section>
+</ng-container>
+
+<ng-template #notFound>
+  <h1 style="text-align: center">Pokemon Not Found</h1>
+</ng-template>

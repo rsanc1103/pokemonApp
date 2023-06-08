@@ -1,0 +1,18 @@
+<div style="margin: 10px">
+  <button onclick="window.history.go(-1);">Go back</button>
+</div>
+<h3>Gen {{ generation$ | async }}</h3>
+
+<div class="grid">
+  <div class="card" *ngFor="let pokemon of pokemons$ | async">
+    <a [routerLink]="['/pokemon/', pokemon.name]">
+      <img
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{
+          pokemon.id
+        }}.png"
+        alt=""
+      />
+      <h3>{{ pokemon.name }}</h3>
+    </a>
+  </div>
+</div>

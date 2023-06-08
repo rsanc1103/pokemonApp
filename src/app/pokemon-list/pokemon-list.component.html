@@ -1,0 +1,55 @@
+<div class="search search-component">
+  <input
+    type="text"
+    placeholder="Search Pokemon"
+    (input)="suggestPokemon(pokemonName.value)"
+    (keydown.enter)="searchPokemon(pokemonName.value)"
+    #pokemonName
+  />
+  <ul class="search-result">
+    <li *ngFor="let p of filteredPokemons">
+      <a [routerLink]="['pokemon/', p]">{{ p }}</a>
+    </li>
+  </ul>
+</div>
+
+<div class="grid">
+  <div class="card" *ngFor="let pokemon of pokemons$ | async">
+    <a [routerLink]="['pokemon/', pokemon.name]">
+      <img
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{
+          pokemon.id
+        }}.png"
+        alt=""
+      />
+      <h3>{{ pokemon.name }}</h3>
+    </a>
+  </div>
+</div>
+
+<div class="controls">
+  <button *ngIf="urlParams.offset > 0" (click)="prevPage()">< Prev</button>
+  <select [ngModel]="listSize$ | async" (ngModelChange)="setListSize($event)">
+    <option [value]="10">10</option>
+    <option [value]="20">20</option>
+    <option [value]="30">30</option>
+    <option [value]="40">40</option>
+    <option [value]="50">50</option>
+  </select>
+  <button *ngIf="pokemonsSeen <= pokemonsCount" (click)="nextPage()">
+    Next >
+  </button>
+</div>
+
+<div class="generations">
+  Pokemons by generation
+  <button [routerLink]="['generation/1']">1</button>
+  <button [routerLink]="['generation/2']">2</button>
+  <button [routerLink]="['generation/3']">3</button>
+  <button [routerLink]="['generation/4']">4</button>
+  <button [routerLink]="['generation/5']">5</button>
+  <button [routerLink]="['generation/6']">6</button>
+  <button [routerLink]="['generation/7']">7</button>
+  <button [routerLink]="['generation/8']">8</button>
+  <button [routerLink]="['generation/9']">9</button>
+</div>
