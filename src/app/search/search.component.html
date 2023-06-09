@@ -4,9 +4,10 @@
       type="text"
       placeholder="Search Pokemon"
       (input)="suggestPokemon(pokemonName.value)"
-      (keydown.enter)="searchPokemon(pokemonName.value)"
+      (keydown.enter)="pokemonName.value = filteredPokemons[0]"
       #pokemonName
     />
+    <!-- (keydown.enter)="pokemonName.value = filteredPokemons[0]" -->
     <div class="search-result">
       <li *ngFor="let p of filteredPokemons">
         <a [routerLink]="['pokemon/', p]">{{ p }}</a>
