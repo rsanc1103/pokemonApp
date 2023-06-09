@@ -1,0 +1,45 @@
+<div class="functionsBar">
+  <div class="search search-component">
+    <input
+      type="text"
+      placeholder="Search Pokemon"
+      (input)="suggestPokemon(pokemonName.value)"
+      (keydown.enter)="searchPokemon(pokemonName.value)"
+      #pokemonName
+    />
+    <div class="search-result">
+      <li *ngFor="let p of filteredPokemons">
+        <a [routerLink]="['pokemon/', p]">{{ p }}</a>
+      </li>
+    </div>
+  </div>
+
+  <div>
+    Type:
+    <select #typesDropdown (change)="typeSelection(typesDropdown.value)">
+      <option value=""></option>
+      <option *ngFor="let t of pokemonTypes$ | async" value="{{ t.name }}">
+        {{ t.name | titlecase }}
+      </option>
+    </select>
+  </div>
+
+  <div>
+    Generation:
+    <select
+      #generationDropdown
+      (change)="genreationSelection(generationDropdown.value)"
+    >
+      <option value=""></option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+    </select>
+  </div>
+</div>

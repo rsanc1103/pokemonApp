@@ -51,13 +51,13 @@ export class PokemonService {
   public getPokemonSpecies(url: string) {
     return this.http
       .get<SpeciesApiResponse>(url)
-      .pipe(map((res) => res.evolves_to.species));
+      .pipe(map((res) => res.evolution_chain));
   }
 
   public getPokemonEvolution(url: string) {
     return this.http
       .get<EvolutionApiResponse>(url)
-      .pipe(map((res) => res.evolves_to.species));
+      .pipe(map((res) => res.chain.evolves_to));
   }
   public getPokemonTypes() {
     return this.http

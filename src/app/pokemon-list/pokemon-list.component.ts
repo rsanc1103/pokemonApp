@@ -14,11 +14,8 @@ export class PokemonListComponent {
   public listSize$: Observable<number>;
   public pageOffset$: Observable<number>;
   public urlParams: any;
-  public pokemonsCount: any;
   public pokemonsSeen: number = 0;
-  public pokemonsList: string[] = [];
-  public filteredPokemons: string[] = [];
-  public pokemonTypes$: Observable<any>;
+  public pokemonsCount: any;
 
   constructor(
     private pokemonService: PokemonService,
@@ -47,12 +44,9 @@ export class PokemonListComponent {
 
     this.pokemonService.getPokemonList(0, 10000).subscribe((p) =>
       p.map((x) => {
-        this.pokemonsList.push(x.name!);
         this.pokemonsCount = p.length;
       })
     );
-
-    this.pokemonTypes$ = this.pokemonService.getPokemonTypes();
   }
 
   setListSize(listSize: number) {
@@ -90,29 +84,5 @@ export class PokemonListComponent {
       queryParamsHandling: 'merge',
       relativeTo: this.route,
     });
-  }
-  searchPokemon(pokemonName: string) {
-    // Navigate to the specified URL
-    this.router.navigate(['pokemon', pokemonName.toLowerCase()]);
-  }
-
-  suggestPokemon(value: string): void {
-    this.filteredPokemons = [];
-
-    for (const item of this.pokemonsList) {
-      if (item.startsWith(value)) {
-        this.filteredPokemons.push(item);
-      }
-    }
-
-    if (value.length < 1) {
-      this.filteredPokemons = [];
-    }
-
-    this.cdr.detectChanges(); // Trigger change detection
-  }
-
-  typeSelection(selectedValue: string) {
-    this.router.navigate([`type/`, selectedValue]);
   }
 }

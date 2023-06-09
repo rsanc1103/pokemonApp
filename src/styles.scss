@@ -5,24 +5,38 @@
 
 body{
     margin: 0;
+    font-family: Helvetica;
 }
 h3{
     text-align: center;
     font-family: 'Rubik Mono One', sans-serif;
-  }
+}
 
-  .card {
+.card {
     background: linear-gradient(orange, #f5da07);
     padding: 5px 10px 80px 10px;
     border-radius: 5px;
     box-shadow: 2px 2px 2px #ccc;
     font-family: Helvetica;
-  }
+}
 
-  .pokemonBackground{
+.pokemonBackground{
     background-image: url('./assets/grass.jpg');
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
     border-radius: 5px;
-  }
+}
+button{
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+select{
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}

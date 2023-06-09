@@ -1,6 +1,5 @@
-import { Pokemon } from "./pokemon";
+import { Pokemon } from './pokemon';
 
 export interface SpeciesApiResponse {
-  id: number;
-  evolves_to: { species: Pokemon[] };
+  evolution_chain: { url: string };
 }

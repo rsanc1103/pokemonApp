@@ -25,6 +25,13 @@
       <option *ngFor="let t of pokemon.moves">{{ t.move.name }}</option>
     </select>
     ]
+
+    <p *ngIf="evolution != pokemon.name">
+      Final form:
+      <a class="evolvesToLink" [routerLink]="['/pokemon/', evolution]">{{
+        evolution | titlecase
+      }}</a>
+    </p>
   </section>
 
   <div class="moreOptions">
