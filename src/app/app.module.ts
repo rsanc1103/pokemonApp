@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { GenerationsListComponent } from './generations-list/generations-list.component';
 import { TypesListComponent } from './types-list/types-list.component';
 import { SearchComponent } from './search/search.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,13 @@ import { SearchComponent } from './search/search.component';
     TypesListComponent,
     SearchComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    MatProgressBarModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

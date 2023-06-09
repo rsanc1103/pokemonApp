@@ -1,11 +1,8 @@
 <app-search></app-search>
 
 <div class="grid">
-  <div class="card" *ngFor="let pokemon of pokemons$ | async">
+  <div class="menuCard" *ngFor="let pokemon of pokemons$ | async">
     <a [routerLink]="['pokemon/', pokemon.id]">
-      <span
-        ><b>{{ pokemon.name | titlecase }}</b></span
-      >
       <div class="pokemonBackground">
         <img
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{
@@ -14,6 +11,9 @@
           alt=""
         />
       </div>
+      <span
+        ><b>{{ pokemon.name | titlecase }}</b></span
+      >
     </a>
   </div>
 </div>
