@@ -1,4 +1,28 @@
+
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
 body{
     margin: 0;
 }
+h3{
+    text-align: center;
+    font-family: 'Rubik Mono One', sans-serif;
+  }
+
+  .card {
+    background: linear-gradient(orange, #f5da07);
+    padding: 5px 10px 80px 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #ccc;
+    font-family: Helvetica;
+  }
+
+  .pokemonBackground{
+    background-image: url('./assets/grass.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    border-radius: 5px;
+  }

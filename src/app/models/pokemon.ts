@@ -7,6 +7,7 @@ export class Pokemon {
   weight?: number;
   height?: number;
   base_experience?: number;
+  moves?: { move: { name: string; url: string } }[];
 
   constructor(name: string, url: string) {
     this.name = name;

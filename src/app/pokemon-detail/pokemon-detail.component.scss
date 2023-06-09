@@ -1,27 +1,49 @@
 
 section {
-    width: 400px;
-    margin: 10px auto;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    border: 1px solid lightgrey;
-    box-shadow: 2px 2px 2px #ccc;
-    font-family: Helvetica; 
-  }
+  width: 400px;
+  margin: 10px auto;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid lightgrey;
+  box-shadow: 2px 2px 2px #ccc;
+  font-family: Helvetica; 
+}
 
-  button{
-    border: none;
-    border-radius: 5px;
-    padding: 8px;
-    cursor: pointer;
-  }
-  .goBackBtn{
-    width: 80px;
-    margin: 10px auto 0 auto;
-  }
-  img{
-    width: 100x;
-    height: 200px;
-  }
+button{
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+}
+.goBackBtn{
+  width: 80px;
+  margin: 10px auto 0 auto;
+}
+img{
+  height: 200px;
+}
+
+select{
+  border: none;
+  background-color: transparent;
+  height: 30px;
+  font-weight: bold;
+}
+
+.moreOptions{
+  display: flex;
+  justify-content: space-between;
+}
+.nextPokemon{
+  width: 70px;
+  height: 70px;
+}
+.moreOptions a{
+  text-align: center;
+  text-decoration: none;
+  font-family: Helvetica;
+  margin: 0 20px;
+  color: black;
+}

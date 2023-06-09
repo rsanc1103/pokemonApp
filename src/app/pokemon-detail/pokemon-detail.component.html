@@ -1,16 +1,14 @@
-<div class="goBackBtn">
-  <button onclick="window.history.go(-1);">Go back</button>
-</div>
-
 <ng-container *ngIf="pokemon$ | async as pokemon; else notFound">
-  <section>
+  <section class="card">
     <h3>{{ pokemon.name | titlecase }}</h3>
-    <img
-      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{
-        pokemon.id
-      }}.png"
-      alt=""
-    />
+    <div class="pokemonBackground">
+      <img
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{
+          pokemon.id
+        }}.png"
+        alt=""
+      />
+    </div>
     <br />
     [
     <div style="display: inline-block" *ngFor="let t of pokemon.types">
@@ -22,9 +20,47 @@
     <p>
       Experience: <b>{{ pokemon.base_experience }}</b>
     </p>
+    <b>{{ pokemon.moves?.length }}</b> Move(s): [
+    <select name="" id="">
+      <option *ngFor="let t of pokemon.moves">{{ t.move.name }}</option>
+    </select>
+    ]
   </section>
+
+  <div class="moreOptions">
+    <a
+      *ngIf="pokemon.id! - 1; else noPrev"
+      [routerLink]="['/pokemon/', pokemon.id! - 1]"
+      [skipLocationChange]="true"
+    >
+      <img
+        class="nextPokemon"
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{
+          pokemon.id! - 1
+        }}.png"
+        alt=""
+      />
+      <br />
+      Previous
+    </a>
+    <a [routerLink]="['/pokemon/', pokemon.id! + 1]">
+      <img
+        class="nextPokemon"
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{
+          pokemon.id! + 1
+        }}.png"
+        alt=""
+      />
+      <br />
+      Next
+    </a>
+  </div>
 </ng-container>
 
 <ng-template #notFound>
   <h1 style="text-align: center">Pokemon Not Found</h1>
+</ng-template>
+
+<ng-template #noPrev>
+  <a href=""></a>
 </ng-template>

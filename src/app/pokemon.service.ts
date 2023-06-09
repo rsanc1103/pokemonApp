@@ -6,6 +6,8 @@ import { ListApiResponse } from './models/list-api-response';
 import { GenerationsApiResponse } from './models/generations-api-response';
 import { EvolutionApiResponse } from './models/evolution-api-response';
 import { SpeciesApiResponse } from './models/species-api-response';
+import { TypesApiResponse } from './models/types-api-response';
+import { PokemonTypeApiResponse } from './models/pokemon-type-api-response';
 
 @Injectable({
   providedIn: 'root',
@@ -56,5 +58,15 @@ export class PokemonService {
     return this.http
       .get<EvolutionApiResponse>(url)
       .pipe(map((res) => res.evolves_to.species));
+  }
+  public getPokemonTypes() {
+    return this.http
+      .get<TypesApiResponse>(`${this.url}/type`)
+      .pipe(map((res) => res.results));
+  }
+  public getPokemonTypesList(pokemonType: string) {
+    return this.http
+      .get<PokemonTypeApiResponse>(`${this.url}/type/${pokemonType}`)
+      .pipe(map((res) => res.pokemon));
   }
 }

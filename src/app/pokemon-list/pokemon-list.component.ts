@@ -18,6 +18,7 @@ export class PokemonListComponent {
   public pokemonsSeen: number = 0;
   public pokemonsList: string[] = [];
   public filteredPokemons: string[] = [];
+  public pokemonTypes$: Observable<any>;
 
   constructor(
     private pokemonService: PokemonService,
@@ -50,6 +51,8 @@ export class PokemonListComponent {
         this.pokemonsCount = p.length;
       })
     );
+
+    this.pokemonTypes$ = this.pokemonService.getPokemonTypes();
   }
 
   setListSize(listSize: number) {
@@ -107,5 +110,9 @@ export class PokemonListComponent {
     }
 
     this.cdr.detectChanges(); // Trigger change detection
+  }
+
+  typeSelection(selectedValue: string) {
+    this.router.navigate([`type/`, selectedValue]);
   }
 }

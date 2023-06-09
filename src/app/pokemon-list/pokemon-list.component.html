@@ -1,28 +1,40 @@
-<div class="search search-component">
-  <input
-    type="text"
-    placeholder="Search Pokemon"
-    (input)="suggestPokemon(pokemonName.value)"
-    (keydown.enter)="searchPokemon(pokemonName.value)"
-    #pokemonName
-  />
-  <ul class="search-result">
-    <li *ngFor="let p of filteredPokemons">
-      <a [routerLink]="['pokemon/', p]">{{ p }}</a>
-    </li>
-  </ul>
+<div class="functionsBar">
+  <div class="search search-component">
+    <input
+      type="text"
+      placeholder="Search Pokemon"
+      (input)="suggestPokemon(pokemonName.value)"
+      (keydown.enter)="searchPokemon(pokemonName.value)"
+      #pokemonName
+    />
+    <ul class="search-result">
+      <li *ngFor="let p of filteredPokemons">
+        <a [routerLink]="['pokemon/', p]">{{ p }}</a>
+      </li>
+    </ul>
+  </div>
+  Type:
+  <select #typesDropdown (change)="typeSelection(typesDropdown.value)">
+    <option *ngFor="let t of pokemonTypes$ | async" value="{{ t.name }}">
+      {{ t.name | titlecase }}
+    </option>
+  </select>
 </div>
 
 <div class="grid">
   <div class="card" *ngFor="let pokemon of pokemons$ | async">
-    <a [routerLink]="['pokemon/', pokemon.name]">
-      <img
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{
-          pokemon.id
-        }}.png"
-        alt=""
-      />
-      <h3>{{ pokemon.name }}</h3>
+    <a [routerLink]="['pokemon/', pokemon.id]">
+      <span
+        ><b>{{ pokemon.name | titlecase }}</b></span
+      >
+      <div class="pokemonBackground">
+        <img
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{
+            pokemon.id
+          }}.png"
+          alt=""
+        />
+      </div>
     </a>
   </div>
 </div>

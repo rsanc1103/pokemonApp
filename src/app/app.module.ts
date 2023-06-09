@@ -8,9 +8,10 @@ import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.componen
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { GenerationsListComponent } from './generations-list/generations-list.component';
+import { TypesListComponent } from './types-list/types-list.component';
 
 @NgModule({
-  declarations: [AppComponent, PokemonListComponent, PokemonDetailComponent, GenerationsListComponent],
+  declarations: [AppComponent, PokemonListComponent, PokemonDetailComponent, GenerationsListComponent, TypesListComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
