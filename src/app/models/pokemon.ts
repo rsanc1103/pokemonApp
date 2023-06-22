@@ -1,18 +1,27 @@
 export class Pokemon {
   id?: number;
   name?: string;
+  height?: number;
+  weight?: number;
+  baseXp?: number;
+  hp?: number;
+  attack?: number;
+  specialAttack?: number;
+  defense?: number;
+  specialDefense?: number;
+  speed?: number;
+  evasion?: number;
+  accuracy?: number;
+  generationId?: number;
+  evolutions?: [];
+  sprite?: { normal: string; shiny: string };
   url?: string;
-  types?: { slot: ''; type?: { name?: ''; url?: '' } }[];
-  species?: { name?: ''; url?: '' };
-  weight!: number;
-  height!: number;
-  base_experience?: number;
-  moves?: { move: { name: string; url: string } }[];
-  stats?: { base_stat: number; stat: { name: string } }[];
+  trainersPokemons?: [];
+  abilities?: [];
+  moves?: [];
+  types?: [];
 
-  constructor(name: string, url: string) {
+  constructor(name: string) {
     this.name = name;
-    this.url = url;
-    this.id = Number(url.split('/').filter(Boolean).pop());
   }
 }

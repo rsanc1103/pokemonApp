@@ -13,7 +13,7 @@ import { PokemonTypeApiResponse } from './models/pokemon-type-api-response';
   providedIn: 'root',
 })
 export class PokemonService {
-  private url = ' https://pokeapi.co/api/v2';
+  private url = 'http://localhost:5037';
 
   constructor(private http: HttpClient) {}
 
@@ -23,18 +23,12 @@ export class PokemonService {
       limit: 1000000,
     };
     return this.http
-      .get<ListApiResponse>(`${this.url}/pokemon`, { params: params })
-      .pipe(map((res) => res.count));
+      .get<ListApiResponse>(`${this.url}/Pokemon`, { params: params })
+      .pipe(map((res) => res));
   }
 
-  public getPokemonList(pageOffset = 0, limit = 10) {
-    const params = {
-      offset: pageOffset,
-      limit: limit,
-    };
-    return this.http
-      .get<ListApiResponse>(`${this.url}/pokemon`, { params: params })
-      .pipe(map((res) => res.results));
+  public getPokemonList() {
+    return this.http.get<any>(`${this.url}/Pokemon`).pipe(map((res) => res));
   }
 
   public getPokemonListByGeneration(gen: string) {
@@ -43,9 +37,8 @@ export class PokemonService {
       .pipe(map((res) => res.pokemon_species));
   }
 
-  public getPokemonDetails(name: string) {
-    name = name.toLowerCase();
-    return this.http.get<any>(`${this.url}/pokemon/${name}`);
+  public getPokemonDetails(id: string) {
+    return this.http.get<any>(`${this.url}/Pokemon?id=${id}`);
   }
 
   public getPokemonSpecies(url: string) {
@@ -59,10 +52,15 @@ export class PokemonService {
       .get<EvolutionApiResponse>(url)
       .pipe(map((res) => res.chain.evolves_to));
   }
-  public getPokemonTypes() {
+  public getPokemonTypes(id: string) {
     return this.http
-      .get<TypesApiResponse>(`${this.url}/type`)
-      .pipe(map((res) => res.results));
+      .get<any>(`${this.url}/Pokemon/type?id=${id}`)
+      .pipe(map((res) => res));
+  }
+  public getTypes() {
+    return this.http
+      .get<any>(`${this.url}/Pokemon/type`)
+      .pipe(map((res) => res));
   }
   public getPokemonTypesList(pokemonType: string) {
     return this.http

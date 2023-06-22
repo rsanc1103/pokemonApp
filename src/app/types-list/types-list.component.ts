@@ -22,7 +22,7 @@ export class TypesListComponent {
 
     this.pokemons$ = this.type$.pipe(
       concatMap((qp) => this.pokemonService.getPokemonTypesList(qp)),
-      map((pl) => pl.map((p) => new Pokemon(p.pokemon.name!, p.pokemon.url!)))
+      map((pl) => pl.map((p) => new Pokemon(p.pokemon.name!)))
     );
   }
 }

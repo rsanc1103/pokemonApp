@@ -35,18 +35,13 @@ export class PokemonListComponent {
       map((qp) => qp['offset'] || this.listSize$)
     );
 
-    this.pokemons$ = route.queryParams.pipe(
-      concatMap((qp) =>
-        this.pokemonService.getPokemonList(qp['offset'], qp['listSize'])
-      ),
-      map((pl) => pl.map((p) => new Pokemon(p.name!, p.url!)))
-    );
+    this.pokemons$ = this.pokemonService.getPokemonList();
 
-    this.pokemonService.getPokemonList(0, 10000).subscribe((p) =>
-      p.map((x) => {
-        this.pokemonsCount = p.length;
-      })
-    );
+    // this.pokemonService.getPokemonList(0, 10000).subscribe((p) =>
+    //   p.map((x) => {
+    //     this.pokemonsCount = p.length;
+    //   })
+    // );
   }
 
   setListSize(listSize: number) {

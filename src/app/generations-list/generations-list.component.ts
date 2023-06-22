@@ -21,15 +21,15 @@ export class GenerationsListComponent {
     this.pokemons$ = route.queryParams.pipe(
       concatMap((qp) =>
         this.pokemonService.getPokemonListByGeneration(qp['gen'])
-      ),
-      map((pl) => pl.map((p) => new Pokemon(p.name!, p.url!)))
+      )
+      // map((pl) => pl.map((p) => new Pokemon(p.name!, p.url!)))
     );
 
     this.generation$ = route.params.pipe(map((p) => p['gen']));
     this.pokemons$ = this.generation$.pipe(
       // concatMap((name: string) => this.pokemonService.getPokemonDetails(name)),
-      concatMap((qp) => this.pokemonService.getPokemonListByGeneration(qp)),
-      map((pl) => pl.map((p) => new Pokemon(p.name!, p.url!)))
+      concatMap((qp) => this.pokemonService.getPokemonListByGeneration(qp))
+      // map((pl) => pl.map((p) => new Pokemon(p.name!, p.url!)))
     );
   }
 }

@@ -10,32 +10,46 @@ import { Pokemon } from '../models/pokemon';
   styleUrls: ['./pokemon-detail.component.scss'],
 })
 export class PokemonDetailComponent {
-  pokemonName$: Observable<string>;
+  pokemonId$: Observable<string>;
   pokemon$: Observable<Pokemon>;
-  chain$: Observable<any>;
+
+  types$: Observable<any>;
+  // chain$: Observable<any>;
   evolution: string = '';
 
   constructor(
     public route: ActivatedRoute,
     private pokemonService: PokemonService
   ) {
-    this.pokemonName$ = route.params.pipe(map((p) => p['name']));
-    this.pokemon$ = this.pokemonName$.pipe(
-      concatMap((name: string) => this.pokemonService.getPokemonDetails(name))
-    );
+    this.pokemonId$ = route.params.pipe(map((p) => p['id']));
 
-    this.chain$ = this.pokemon$.pipe(
-      concatMap((pokemon) =>
-        this.pokemonService
-          .getPokemonSpecies(pokemon.species?.url!)
-          .pipe(
-            concatMap((url) => this.pokemonService.getPokemonEvolution(url.url))
-          )
+    this.pokemon$ = this.pokemonId$.pipe(
+      concatMap((id: string) => this.pokemonService.getPokemonDetails(id))
+    );
+    this.pokemon$ = this.pokemon$.pipe(map((p: any) => p[0]));
+
+    // testing
+    this.pokemonId$
+      .pipe(
+        concatMap((id: string) => this.pokemonService.getPokemonDetails(id))
       )
-    );
+      .subscribe((p: any) => new Pokemon(p[0]['name']));
 
-    this.chain$.subscribe(
-      (e) => (this.evolution = e[0]['evolves_to'][0]['species']['name'])
+    this.types$ = this.pokemonId$.pipe(
+      concatMap((id: string) => this.pokemonService.getPokemonTypes(id))
     );
+    // this.chain$ = this.pokemon$.pipe(
+    //   concatMap((pokemon) =>
+    //     this.pokemonService
+    //       .getPokemonSpecies(pokemon.species?.url!)
+    //       .pipe(
+    //         concatMap((url) => this.pokemonService.getPokemonEvolution(url.url))
+    //       )
+    //   )
+    // );
+
+    // this.chain$.subscribe(
+    //   (e) => (this.evolution = e[0]['evolves_to'][0]['species']['name'])
+    // );
   }
 }

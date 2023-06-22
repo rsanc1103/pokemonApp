@@ -17,12 +17,12 @@
 
   <div>
     Type:
-    <select #typesDropdown (change)="typeSelection(typesDropdown.value)">
+    <!-- <select #typesDropdown (change)="typeSelection(typesDropdown.value)">
       <option value=""></option>
       <option *ngFor="let t of pokemonTypes$ | async" value="{{ t.name }}">
         {{ t.name | titlecase }}
       </option>
-    </select>
+    </select> -->
   </div>
   <div>
     Generation:

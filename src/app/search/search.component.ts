@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class SearchComponent {
   public filteredPokemons: string[] = [];
-  public pokemonTypes$: Observable<any>;
+  // public pokemonTypes$: Observable<any>;
   public pokemonsList: string[] = [];
 
   constructor(
@@ -19,13 +19,12 @@ export class SearchComponent {
     public router: Router,
     private cdr: ChangeDetectorRef
   ) {
-    this.pokemonService.getPokemonList(0, 10000).subscribe((p) =>
-      p.map((x) => {
-        this.pokemonsList.push(x.name!);
-      })
-    );
-
-    this.pokemonTypes$ = this.pokemonService.getPokemonTypes();
+    // this.pokemonService.getPokemonList().subscribe((p) =>
+    //   p.map((x: any) => {
+    //     this.pokemonsList.push(x.name!);
+    //   })
+    // );
+    // this.pokemonTypes$ = this.pokemonService.getPokemonTypes();
   }
 
   searchPokemon(pokemonName: string) {
